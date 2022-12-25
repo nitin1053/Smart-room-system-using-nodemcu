@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Nitin Jha",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 11.33,
+      "left": 16.67,
+      "attrs": { "env": "micropython-20220618-v1.19.1" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -23.97, "left": -111.93, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -38.27,
+      "left": 177.67,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -105.33, "left": -28.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "servo1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "servo1:V+", "esp:VIN", "green", [ "h0" ] ],
+    [ "esp:D15", "dht1:SDA", "violet", [ "h0" ] ],
+    [ "led1:A", "esp:D18", "green", [ "v0" ] ],
+    [ "servo1:PWM", "esp:D14", "green", [ "h0" ] ]
+  ]
+}
